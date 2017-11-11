@@ -1,20 +1,18 @@
 import UIKit
 
 
-struct Point {
-    let x: Int, y: Int
+struct User {
+    let firstName: String
+    let lastName: String
+    let age: Int
 }
 
-let p = Point(x: 21, y: 30)
-print(String(reflecting: p))
-
-
-extension Point: CustomDebugStringConvertible {
-    var debugDescription: String {
-        return "Point(x: \(x), y: \(y))"
+extension User: CustomStringConvertible {
+    var description: String {
+        return "👤 Name: \(firstName) \(lastName), Age: \((age))"
     }
 }
 
-print(String(reflecting: p))
-
+let user = User(firstName: "John", lastName: "Doe", age: 22)
+print(user)
 
