@@ -8,10 +8,16 @@ struct User {
     let age: Int
 }
 
+extension User {
+    var fullName: String {
+        return "\(firstName) \(lastName)"
+    }
+}
+
 // Pretty Printable of User
 extension User: CustomStringConvertible {
     var description: String {
-        return "👤 Name: \(firstName) \(lastName), Age: \((age))"
+        return "👤 Name: \(fullName), Age: \(age)"
     }
 }
 
