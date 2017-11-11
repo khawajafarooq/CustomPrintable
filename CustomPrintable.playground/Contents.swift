@@ -1,7 +1,6 @@
-import Foundation
+import UIKit
 
-
-// struct example of Custom Printable
+// Custom Printable value type struct
 struct User {
     let firstName: String
     let lastName: String
@@ -17,12 +16,13 @@ extension User {
 // Pretty Printable of User
 extension User: CustomStringConvertible {
     var description: String {
-        return "👤 Name: \(fullName), Age: \(age)"
+        return """
+        👤
+        Name: \(fullName)
+        Age: \(age)
+        """
     }
 }
 
 let user = User(firstName: "John", lastName: "Doe", age: 22)
 print(user)
-
-
-
