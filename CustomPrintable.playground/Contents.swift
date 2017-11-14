@@ -35,11 +35,37 @@ struct User {
     let age: Int
 }
 
-let user = User(firstName: "John", lastName: "Doe", age: 22)
-print(user)
-
 extension User: CustomPrintable {
     var emoji: String {
         return "👨🏼‍🚀"
     }
 }
+
+let user = User(firstName: "John", lastName: "Doe", age: 22)
+print(user)
+
+
+// CustomStringConvertible
+struct AnotherUser {
+    let name: String
+    let gender: String
+}
+
+extension AnotherUser: CustomStringConvertible {
+    var description: String {
+        
+        var emoji = gender.lowercased() == "male" ? "👨🏼": "👩🏼"
+        return """
+        AnotherUser
+        name: \(name)
+        gender: \(emoji)
+        """
+    }
+}
+
+let aUser = AnotherUser(name: "Chris Angel", gender: "Male")
+print(aUser)
+
+
+
+
