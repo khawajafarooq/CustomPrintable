@@ -1,5 +1,33 @@
 import UIKit
 
+// Selling the idea of pretty printable
+
+protocol CustomPrintable: CustomStringConvertible {
+    var emoji: String { get }
+}
+
+extension CustomPrintable {
+
+    var emoji: String {
+        return "📝"
+    }
+
+    var description: String {
+
+        var desc: String = "\(type(of: self)) \(emoji)\n"
+        let object = Mirror(reflecting: self)
+
+        for property in object.children {
+            guard let propertyName = property.label else {
+                continue
+            }
+
+            desc += "\(propertyName): \(property.value)\n"
+        }
+        return desc
+    }
+}
+
 // Custom Printable value type struct
 struct User {
     let firstName: String
@@ -7,25 +35,11 @@ struct User {
     let age: Int
 }
 
-extension User {
-    var fullName: String {
-        return "\(firstName) \(lastName)"
-    }
-}
-
-// Pretty Printable for User
-extension User: CustomStringConvertible {
-    var description: String {
-        return """
-        *** User 👤 ***
-        Name: \(fullName)
-        Age: \(age)
-
-        """
-    }
-}
-
-
 let user = User(firstName: "John", lastName: "Doe", age: 22)
 print(user)
 
+extension User: CustomPrintable {
+    var emoji: String {
+        return "👨🏼‍🚀"
+    }
+}
