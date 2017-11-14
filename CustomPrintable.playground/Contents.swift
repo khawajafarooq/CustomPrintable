@@ -13,16 +13,19 @@ extension User {
     }
 }
 
-// Pretty Printable of User
+// Pretty Printable for User
 extension User: CustomStringConvertible {
     var description: String {
         return """
-        👤
+        *** User 👤 ***
         Name: \(fullName)
         Age: \(age)
+
         """
     }
 }
 
+
 let user = User(firstName: "John", lastName: "Doe", age: 22)
 print(user)
+
